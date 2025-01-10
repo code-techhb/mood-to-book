@@ -3,6 +3,7 @@
 :root {
   --black: #000;
   --light-color: #ebd3f8;
+  --dark-color: #1a1a1a;
 }
 
 * {
