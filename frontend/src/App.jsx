@@ -11,7 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/mood-selection" element={<MoodSelection />} />
-          <Route path="/books" element={<Books />} />
+          <Route path="/books/:moodKeyword" element={<Books />} />
         </Routes>
       </div>
     </Router>
