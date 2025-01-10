@@ -43,7 +43,7 @@ LitMood is an innovative book recommendation application that suggests reading m
 
 ```bash
 git clone https://github.com/yourusername/litmood.git
-cd litmood
+cd mood-to-book
 ```
 
 2. Install dependencies for both frontend and backend:
@@ -115,7 +115,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/MIT) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -131,4 +131,4 @@ Feel free to reach out for questions, suggestions, or just to share your reading
 
 ---
 
-Made with 📚 and ❤️ by [Houlaymatou B.](https://github.com/code-techhb)
+Made with 📚 and ❤️ by [Houlaymatou B.](https://github.com/code-techhb) at the ColorStack Winter Break 2024 Hackathon

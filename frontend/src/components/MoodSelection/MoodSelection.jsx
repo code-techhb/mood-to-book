@@ -57,7 +57,7 @@ const MoodSelection = () => {
             onChange={handleTextAreaChange}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            placeholder="excited 🎉 | nostalgic | 🦋 | peaceful or let your words flow as poetically as your heart feels......"
+            placeholder="excited | 🎉 | peaceful | 🤓 |  or let your words flow as poetically as your heart feels......"
             className={`${styles.input} ${isFocused ? styles.focused : ""} ${
               isAnalyzing ? styles.analyzing : ""
             }`}
