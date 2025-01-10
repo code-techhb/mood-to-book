@@ -63,10 +63,11 @@ app.post("/api/analyze-and-recommend", async (req, res) => {
 async function searchBooks(keyword) {
   try {
     const searchQuery = `${keyword} fiction`;
+    // Increase limit to have a larger pool to select from
     const response = await fetch(
       `https://openlibrary.org/search.json?q=${encodeURIComponent(
         searchQuery
-      )}&fields=key,title,author_name,first_publish_year,ratings_average,cover_i&limit=10`
+      )}&fields=key,title,author_name,first_publish_year,ratings_average,cover_i&limit=50`
     );
 
     if (!response.ok) {
@@ -74,11 +75,19 @@ async function searchBooks(keyword) {
     }
 
     const data = await response.json();
+    const currentYear = new Date().getFullYear();
 
-    const processedBooks = data.docs
+    // Filter valid books first
+    const validBooks = data.docs
       .filter(
         (book) =>
-          book.title && book.author_name && book.cover_i && book.ratings_average
+          book.title &&
+          book.author_name &&
+          book.cover_i &&
+          book.ratings_average &&
+          book.key &&
+          book.first_publish_year &&
+          book.first_publish_year <= currentYear
       )
       .map((book) => ({
         title: book.title,
@@ -87,10 +96,38 @@ async function searchBooks(keyword) {
         rating: book.ratings_average,
         coverId: book.cover_i,
         coverUrl: `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`,
-      }))
+        bookUrl: `https://openlibrary.org${book.key}`,
+      }));
+
+    // Define cutoff year (e.g., 50 years ago)
+    const cutoffYear = currentYear - 50;
+
+    // Split books into ancient and modern
+    const ancientBooks = validBooks
+      .filter((book) => book.year <= cutoffYear)
       .sort((a, b) => b.rating - a.rating);
 
-    return processedBooks.slice(0, 2);
+    const modernBooks = validBooks
+      .filter((book) => book.year > cutoffYear)
+      .sort((a, b) => b.rating - a.rating);
+
+    // Select top rated book from each category
+    // If one category is empty, take two from the other
+    let selectedBooks = [];
+
+    if (ancientBooks.length && modernBooks.length) {
+      // We have books from both categories
+      selectedBooks = [ancientBooks[0], modernBooks[0]];
+    } else if (ancientBooks.length) {
+      // Only ancient books available
+      selectedBooks = ancientBooks.slice(0, 2);
+    } else if (modernBooks.length) {
+      // Only modern books available
+      selectedBooks = modernBooks.slice(0, 2);
+    }
+
+    // Sort final selection by rating
+    return selectedBooks.sort((a, b) => b.rating - a.rating);
   } catch (error) {
     console.error("Error searching books:", error);
     throw error;
