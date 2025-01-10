@@ -1,9 +1,7 @@
 export const analyzeMood = async (mood) => {
   try {
-    console.log("Sending mood to analyze:", mood); // Debug log
-
     const response = await fetch(
-      "http://localhost:5089/api/analyze-and-recommend",
+      `${import.meta.env.VITE_BACKEND_URL}/api/analyze-and-recommend`,
       {
         method: "POST",
         headers: {
@@ -20,19 +18,14 @@ export const analyzeMood = async (mood) => {
         statusText: response.statusText,
         data: errorData,
       });
-      throw new Error(
-        `Failed to analyze mood: ${response.status} ${response.statusText}`
-      );
+      throw new Error(`Error 💔: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
-    console.log("Server response:", data); // Debug log
-
     if (!data.mood) {
       console.error("No mood in response:", data);
       throw new Error("Invalid response format");
     }
-
     return data.mood;
   } catch (error) {
     console.error("Error in analyzeMood:", error);

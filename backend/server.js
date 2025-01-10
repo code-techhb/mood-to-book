@@ -41,15 +41,11 @@ app.post("/api/analyze-and-recommend", async (req, res) => {
       temperature: 0.3,
       max_tokens: 10,
     });
-
     const rawResponse = completion.choices[0]?.message?.content?.trim() || "";
     const cleanedKeyword = cleanMoodKeyword(rawResponse);
-
     // console.log("Raw Groq response:", rawResponse);
     // console.log("Cleaned keyword:", cleanedKeyword);
-
     const books = await searchBooks(cleanedKeyword);
-
     res.json({
       mood: cleanedKeyword,
       books: books,
@@ -77,7 +73,6 @@ async function searchBooks(keyword) {
     const data = await response.json();
     const currentYear = new Date().getFullYear();
 
-    // Filter valid books first
     const validBooks = data.docs
       .filter(
         (book) =>
@@ -99,33 +94,23 @@ async function searchBooks(keyword) {
         bookUrl: `https://openlibrary.org${book.key}`,
       }));
 
-    // Define cutoff year (e.g., 50 years ago)
     const cutoffYear = currentYear - 50;
-
-    // Split books into ancient and modern
     const ancientBooks = validBooks
       .filter((book) => book.year <= cutoffYear)
       .sort((a, b) => b.rating - a.rating);
-
     const modernBooks = validBooks
       .filter((book) => book.year > cutoffYear)
       .sort((a, b) => b.rating - a.rating);
 
     // Select top rated book from each category
-    // If one category is empty, take two from the other
     let selectedBooks = [];
-
     if (ancientBooks.length && modernBooks.length) {
-      // We have books from both categories
       selectedBooks = [ancientBooks[0], modernBooks[0]];
     } else if (ancientBooks.length) {
-      // Only ancient books available
       selectedBooks = ancientBooks.slice(0, 2);
     } else if (modernBooks.length) {
-      // Only modern books available
       selectedBooks = modernBooks.slice(0, 2);
     }
-
     // Sort final selection by rating
     return selectedBooks.sort((a, b) => b.rating - a.rating);
   } catch (error) {

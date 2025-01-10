@@ -19,7 +19,6 @@ const LandingPage = () => {
 
   const handleNavigation = async () => {
     setIsAnimating(true);
-    // Play the sound
     try {
       await audio.play();
     } catch (error) {
@@ -28,7 +27,7 @@ const LandingPage = () => {
     // Wait for animation to complete before navigating
     setTimeout(() => {
       navigate("/mood-selection");
-    }, 1000); // Increased to 2 seconds to match slower animation
+    }, 1000);
   };
 
   return (
