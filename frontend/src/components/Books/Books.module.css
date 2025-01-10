@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  padding: 2rem 2rem;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@
 .container h2 {
   font-size: 4.8rem;
   text-align: center;
-  background: linear-gradient(to right, var(--light-color), #fff);
+  background: linear-gradient(to right, var(--light-color), #e1dfdf);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -48,6 +48,7 @@
   font-family: "Inter";
   font-style: italic;
 }
+
 .booksGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -135,7 +136,7 @@
 }
 
 .loading {
-  min-height: 60vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,7 +163,7 @@
 }
 
 .error {
-  min-height: 60vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -276,22 +277,53 @@
 }
 
 /* queries */
-@media (max-width: 768px) {
+@media (max-width: 1105px) {
+  .backButton {
+    position: static;
+    margin: 2rem auto;
+    width: fit-content;
+  }
+
+  .container {
+    padding-top: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .booksGrid {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
+
+  .backButton {
+    top: 3rem;
+    left: 3rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
   .container {
     padding: 2rem 1rem;
   }
 
   .container h2 {
     font-size: 3.2rem;
+    padding-top: 1rem;
+  }
+
+  .backButton {
+    position: static;
+    margin: 2rem auto;
+    width: fit-content;
   }
 
   .booksGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 3rem;
   }
 
   .bookCard {
     max-width: 40rem;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -317,13 +349,6 @@
     font-size: 1.4rem;
   }
 
-  .backButton {
-    top: 2rem;
-    left: 2rem;
-    padding: 0.8rem 1.6rem;
-    font-size: 1.4rem;
-  }
-
   .socialSection {
     margin-top: 4rem;
     gap: 2rem;
@@ -341,6 +366,41 @@
   .shareButton {
     padding: 1.4rem 2.8rem;
     font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    font-size: 3.2rem;
+    padding: 1rem 2rem;
+    gap: 2rem;
+  }
+
+  .container h2 {
+    font-size: 2.8rem;
+  }
+
+  .backButton {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+    position: static;
+    width: fit-content;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .description {
+    font-size: 1.6rem;
+  }
+
+  .bookCard {
+    padding: 1.5rem;
+  }
+
+  .bookCover {
+    height: 25rem;
   }
 }
 

@@ -152,7 +152,7 @@ const Books = () => {
       {books.length > 0 && (
         <div className={styles.shareSection}>
           <p className={styles.shareText}>
-            Invite your Friends to share your <span>LitMood</span> with you?
+            Invite your Friends to share your <span>LitMood</span>?
           </p>
           <button onClick={handleShare} className={styles.shareButton}>
             <Share2 size={13} />

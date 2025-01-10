@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#654777"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="180" height="180" fill="url(#bgGradient)" rx="45" ry="45"/>
+  
+  <!-- Decorative Circle -->
+  <circle cx="90" cy="90" r="75" fill="none" stroke="#ebd3f8" stroke-width="4" opacity="0.2"/>
+  
+  <!-- Book Stack -->
+  <g transform="translate(45, 45)">
+    <!-- Bottom Book -->
+    <rect x="0" y="60" width="90" height="20" rx="3" fill="#654777" opacity="0.9"/>
+    <!-- Middle Book -->
+    <rect x="5" y="40" width="90" height="20" rx="3" fill="#ebd3f8" opacity="0.8"/>
+    <!-- Top Book -->
+    <rect x="10" y="20" width="90" height="20" rx="3" fill="#e99898"/>
+    
+    <!-- Heart Icon -->
+    <path d="M55 15 L45 5 C42 2 42 -2 45 -5 C48 -8 52 -8 55 -5 C58 -8 62 -8 65 -5 C68 -2 68 2 65 5 L55 15" 
+          fill="#ebd3f8" transform="translate(0, 40)"/>
+          
+    <!-- Decorative Swirls -->
+    <path d="M15 70 C25 65, 35 75, 45 70 S65 75, 75 70" 
+          fill="none" stroke="#e99898" stroke-width="2" opacity="0.6"/>
+  </g>
+</svg>
