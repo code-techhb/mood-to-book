@@ -12,10 +12,11 @@ const Books = () => {
 
   const handleShare = async () => {
     try {
+      const baseUrl = window.location.origin;
       const shareData = {
         title: "✨ Join my LitMood Journey",
         text: `Hey! 📚 I just discovered some amazing book recommendations matching my ${moodKeyword} mood on LitMood. Want to explore together? ✨`,
-        url: window.location.href,
+        url: baseUrl,
       };
 
       if (navigator.share) {

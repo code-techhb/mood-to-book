@@ -107,7 +107,7 @@ npm run dev
 
 ## Deployed Version 🌐
 
-- You can check out the deployed version of the app [here](#) 📚
+- You can check out the deployed version of the app [here](https://litmood.vercel.app/) 📚
 
 ## 🤝 Contributing
 
