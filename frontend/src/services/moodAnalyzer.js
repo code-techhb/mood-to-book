@@ -18,7 +18,7 @@ export const analyzeMood = async (mood) => {
         statusText: response.statusText,
         data: errorData,
       });
-      throw new Error(`Error 💔: ${response.status} ${response.statusText}`);
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();

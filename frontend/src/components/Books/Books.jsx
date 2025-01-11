@@ -41,7 +41,7 @@ const Books = () => {
         setIsLoading(true);
         // console.log("Fetching books for mood:", moodKeyword);
         const response = await fetch(
-          "http://localhost:5089/api/analyze-and-recommend",
+          `${import.meta.env.VITE_BACKEND_URL}/api/analyze-and-recommend`,
           {
             method: "POST",
             headers: {
