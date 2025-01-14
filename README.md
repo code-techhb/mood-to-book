@@ -62,7 +62,6 @@ npm install
 
 ```env
 GROQ_API_KEY=your_groq_api_key
-PORT=5089
 ```
 
 4. Start the development servers:
@@ -108,6 +107,7 @@ npm run dev
 ## Deployed Version 🌐
 
 - You can check out the deployed version of the app [here](https://litmood.vercel.app/) 📚
+- Watch the walkthrough of the project on YouTube: [LitMood Demo](https://youtu.be/4mxHU3q4oS4?si=lQ_tUC0K-PFWXuCg) 🎥
 
 ## 🤝 Contributing
 
@@ -122,6 +122,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://opens
 - [Open Library](https://openlibrary.org/) for their comprehensive book API
 - [Groq](https://groq.com/) for natural language processing capabilities
 - [Lucide](https://lucide.dev/) for beautiful icons
+- [Freesound](https://freesound.org/) for high-quality audio tracks
 
 ## 📬 Contact
 
